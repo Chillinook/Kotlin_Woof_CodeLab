@@ -114,17 +114,13 @@ fun DogIcon(
     modifier: Modifier = Modifier
 ) {
     Image(
-        modifier = modifier
-            .clip(MaterialTheme.shapes.small)
+        modifier = Modifier
+//            .clip(MaterialTheme.shapes.small)
             .size(dimensionResource(R.dimen.image_size))
-            .padding(dimensionResource(R.dimen.padding_small)),
+//            .padding(dimensionResource(R.dimen.padding_small))
 
-        painter = painterResource(dogIcon),
+//        painter = painterResource(dogIcon),contentDescription = null
 
-        // Content Description is not needed here - image is decorative, and setting a null content
-        // description allows accessibility services to skip this element during navigation.
-
-        contentDescription = null
     )
 }
 
