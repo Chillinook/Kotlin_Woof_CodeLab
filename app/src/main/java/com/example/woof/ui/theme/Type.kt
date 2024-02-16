@@ -18,10 +18,15 @@ package com.example.woof.ui.theme
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import com.example.woof.R
 
 
-val Ab = FontFamily(
+val AbrilFatface = FontFamily(
+    Font(R.font.abrilfatface_regular)
+)
 
+val Montserrat = FontFamily(
+    Font(R.font.sixtyfour_regular)
 )
 
 

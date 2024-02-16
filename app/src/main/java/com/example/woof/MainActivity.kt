@@ -31,10 +31,13 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
+import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.dimensionResource
@@ -51,7 +54,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             WoofTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize()
                 ) {
@@ -67,10 +69,18 @@ class MainActivity : ComponentActivity() {
  */
 @Composable
 fun WoofApp() {
-
-    LazyColumn {
-        items(dogs) {
-            DogItem(dog = it)
+    Scaffold(
+        topBar = {
+            WoofTopAppBar()
+        }
+    ) { it ->
+        LazyColumn(contentPadding = it) {
+            items(dogs) {
+                DogItem(
+                    dog = it,
+                    modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
+                )
+            }
         }
     }
 }
@@ -114,12 +124,12 @@ fun DogIcon(
     modifier: Modifier = Modifier
 ) {
     Image(
-        modifier = Modifier
-//            .clip(MaterialTheme.shapes.small)
+        modifier = modifier
+            .clip(MaterialTheme.shapes.small)
             .size(dimensionResource(R.dimen.image_size))
-//            .padding(dimensionResource(R.dimen.padding_small))
+            .padding(dimensionResource(R.dimen.padding_small)),
 
-//        painter = painterResource(dogIcon),contentDescription = null
+        painter = painterResource(dogIcon),contentDescription = null
 
     )
 }
@@ -142,7 +152,6 @@ fun DogInformation(
             text = stringResource(dogName),
             modifier = Modifier
                 .padding(top = dimensionResource(R.dimen.padding_small))
-                .clip(MaterialTheme.shapes.large)
         )
         Text(
             text = stringResource(R.string.years_old, dogAge),
@@ -152,11 +161,31 @@ fun DogInformation(
 
 
 @Composable
-fun WoofBar() {
-    Row {
-        Image(painter = painterResource(id = R.drawable.ic_woof_logo),
-            contentDescription = "wtf")
-    }
+fun WoofTopAppBar(modifier: Modifier = Modifier) {
+
+
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Image(
+                    modifier = Modifier
+                        .size(dimensionResource(R.dimen.image_size))
+                        .padding(dimensionResource(R.dimen.padding_small)),
+                    painter = painterResource(R.drawable.ic_woof_logo),
+
+                    // Content Description is not needed here - image is decorative, and setting a
+                    // null content description allows accessibility services to skip this element
+                    // during navigation.
+
+                    contentDescription = null
+                )
+                Text(
+                    text = stringResource(R.string.app_name),
+                    style = MaterialTheme.typography.displayLarge
+                )
+            }
+
+
 }
 
 /**
