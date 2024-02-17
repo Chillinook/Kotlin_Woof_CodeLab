@@ -128,9 +128,7 @@ fun DogIcon(
             .clip(MaterialTheme.shapes.small)
             .size(dimensionResource(R.dimen.image_size))
             .padding(dimensionResource(R.dimen.padding_small)),
-
         painter = painterResource(dogIcon),contentDescription = null
-
     )
 }
 
@@ -162,28 +160,21 @@ fun DogInformation(
 
 @Composable
 fun WoofTopAppBar(modifier: Modifier = Modifier) {
-
-
-            Row(
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Image(
-                    modifier = Modifier
-                        .size(dimensionResource(R.dimen.image_size))
-                        .padding(dimensionResource(R.dimen.padding_small)),
-                    painter = painterResource(R.drawable.ic_woof_logo),
-
-                    // Content Description is not needed here - image is decorative, and setting a
-                    // null content description allows accessibility services to skip this element
-                    // during navigation.
-
-                    contentDescription = null
-                )
-                Text(
-                    text = stringResource(R.string.app_name),
-                    style = MaterialTheme.typography.displayLarge
-                )
-            }
+        Row(
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Image(
+                modifier = Modifier
+                    .size(dimensionResource(R.dimen.image_size))
+                    .padding(dimensionResource(R.dimen.padding_small)),
+                painter = painterResource(R.drawable.ic_woof_logo),
+                contentDescription = null
+            )
+            Text(
+                text = stringResource(R.string.app_name),
+                style = MaterialTheme.typography.displayLarge
+            )
+        }
 
 
 }
