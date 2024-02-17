@@ -175,8 +175,6 @@ fun WoofTopAppBar(modifier: Modifier = Modifier) {
                 style = MaterialTheme.typography.displayLarge
             )
         }
-
-
 }
 
 /**
